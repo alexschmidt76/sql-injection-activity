@@ -23,8 +23,9 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     let username = req.body.username,
         password = req.body.password
+    let query = "SELECT title FROM user WHERE username = '" + username + "' AND password = '" + password + "'"
+    console.log(username, password, query)
 
-    let query = "SELECT title FROM user WHERE username = '" + username + "' AND password = '" + password +"'"
     db.get(query, function(err, row) {
         if (err) {
             console.log('ERROR', err)
